@@ -1,5 +1,8 @@
 # CTCTookKit
-A unified Chinese Text Correction Toolkit
+A Chinese Text Correction Toolkit
+
+This toolkit is designed to be a do-it-all tool for Chinese text correction. 
+It is designed to be a comprehensive toolkit that covers almost all stages of text correction, including data management, data preprocessing, postprocessing prediction, evaluation, and error analysis.
 
 ## Roadmap
 
@@ -19,6 +22,6 @@ A unified Chinese Text Correction Toolkit
         - [ ] Postprocessing
 
 Allowing for the following functionalities:
-    - Directly shell command
-    - Python API
+- Directly shell command
+- Python API
 
