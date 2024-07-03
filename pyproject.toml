@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ctctk"
+version = "0.0.1"
+authors = [
+    {name = "Houquan Zhou", email = "Jacob_Zhou@outlook.com"},
+    {name = "Yumeng Liu", email = "ymliu.cs@gmail.com"},
+]
+description = "A Utility Toolkit for Chinese Text Correction"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/SUDA-LA/CTCTookKit"
+Issues = "https://github.com/SUDA-LA/CTCTookKit/issues"
