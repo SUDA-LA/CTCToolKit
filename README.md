@@ -1,4 +1,4 @@
-# CTCTookKit
+# CTCToolKit
 A Chinese Text Correction Toolkit
 
 This toolkit is designed to be a do-it-all tool for Chinese text correction. 
