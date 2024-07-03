@@ -19,5 +19,5 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/SUDA-LA/CTCTookKit"
-Issues = "https://github.com/SUDA-LA/CTCTookKit/issues"
+Homepage = "https://github.com/SUDA-LA/CTCToolKit/"
+Issues = "https://github.com/SUDA-LA/CTCToolKit/issues"
