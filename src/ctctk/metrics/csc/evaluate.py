@@ -353,9 +353,9 @@ def calculate_metric(src_sentences, tgt_sentences, pred_sentences, report_file=N
                     continue
                 char_detection['all_error'] += 1
                 char_correction['all_error'] += 1
-                true_error_indexes.add((b_ori, e_ori, b_prd, e_prd))
-                true_error_edits.add((b_ori, e_ori, b_prd, e_prd, tuple(tgt_chars[b_prd:e_prd])))
-        
+                true_error_indexes.add((b_ori, e_ori))
+                true_error_edits.add((b_ori, e_ori, tuple(tgt_chars[b_prd:e_prd])))
+
         for pred_edit in pred_edits:
             edit_type, b_ori, e_ori, b_prd, e_prd = pred_edit
             if edit_type != 'M':
@@ -364,11 +364,11 @@ def calculate_metric(src_sentences, tgt_sentences, pred_sentences, report_file=N
                     continue
                 char_detection['all_predict'] += 1
                 char_correction['all_predict'] += 1
-                detect_indexes.add((b_ori, e_ori, b_prd, e_prd))
-                detect_edits.add((b_ori, e_ori, b_prd, e_prd, tuple(pred_chars[b_prd:e_prd])))
-                if (b_ori, e_ori, b_prd, e_prd) in true_error_indexes:
+                detect_indexes.add((b_ori, e_ori))
+                detect_edits.add((b_ori, e_ori, tuple(pred_chars[b_prd:e_prd])))
+                if (b_ori, e_ori) in true_error_indexes:
                     char_detection['true_predict'] += 1
-                if (b_ori, e_ori, b_prd, e_prd, tuple(pred_chars[b_prd:e_prd])) in true_error_edits:
+                if (b_ori, e_ori, tuple(pred_chars[b_prd:e_prd])) in true_error_edits:
                     char_correction['true_predict'] += 1
 
         if true_error_indexes:
@@ -400,8 +400,8 @@ def calculate_metric(src_sentences, tgt_sentences, pred_sentences, report_file=N
         output_errors.append(
             [
                 "原始: " + "".join(src_chars),
-                "正确: " + "".join(["".join(tgt_chars[t_b:t_e]) if (s_b, s_e, t_b, t_e) not in true_error_indexes else f"【{''.join(tgt_chars[t_b:t_e])}】" for _, s_b, s_e, t_b, t_e in gold_edits]),
-                "预测: " + "".join(["".join(pred_chars[t_b:t_e]) if (s_b, s_e, t_b, t_e) not in detect_indexes else f"【{''.join(pred_chars[t_b:t_e])}】" for _, s_b, s_e, t_b, t_e in pred_edits]),
+                "正确: " + "".join(["".join(tgt_chars[t_b:t_e]) if (s_b, s_e) not in true_error_indexes else f"【{''.join(tgt_chars[t_b:t_e])}】" for _, s_b, s_e, t_b, t_e in gold_edits]),
+                "预测: " + "".join(["".join(pred_chars[t_b:t_e]) if (s_b, s_e) not in detect_indexes else f"【{''.join(pred_chars[t_b:t_e])}】" for _, s_b, s_e, t_b, t_e in pred_edits]),
                 "错误类型: " + error_type,
             ]
         )
